@@ -64,6 +64,13 @@ namespace StudioHeartAndSoul
         public CompetitiveAdvantagePreservation advantagePreservation;
         public WisdomLeakageDefense leakageDefense;
         
+        [Header("🔧 Universal Framework Compatibility Properties")]
+        public bool learnsFromAllDomains = true;
+        public EvolutionSpeed evolutionSpeed = EvolutionSpeed.Continuous;
+        public WisdomAccumulation wisdomAccumulation = WisdomAccumulation.Exponential;
+        public bool creativeInsightGeneration = true;
+        public bool communityIntegration = true;
+        
         // Engine connections for regulation
         private UniversalGuidanceFramework universalFramework;
         private EmotionalGuidanceEngine emotionalEngine;

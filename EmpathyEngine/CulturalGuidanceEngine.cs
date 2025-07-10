@@ -246,14 +246,17 @@ namespace StudioHeartAndSoul
             // Enable cross-engine integration
         }
         
-        private void GenerateCommunityConnections()
+        private void GenerateCommunityConnections(CreativeDecision decision, ProjectContext context, CulturalGuidanceOutput output)
         {
-            // Generate community connections
+            // Generate community connections based on decision and context
+            output.recommendedExperts = new List<CommunityExpert>();
+            output.communityValidationNeeded = true;
         }
         
-        private void ProvideCulturalEnhancements()
+        private void ProvideCulturalEnhancements(CreativeDecision decision, ProjectContext context, CulturalGuidanceOutput output)
         {
-            // Provide cultural enhancements
+            // Provide cultural enhancements based on decision and context
+            output.alternativeSuggestions = new List<CulturalAlternative>();
         }
         
         // REMOVED DUPLICATE METHOD - Implementation exists above
@@ -291,7 +294,6 @@ namespace StudioHeartAndSoul
     public class CulturalAppropriationPrevention { public bool identifiesRiskFactors; public bool suggestsAlternatives; public bool connectsWithCommunities; public bool educatesOnImpact; public bool promotesAuthenticity; public bool buildsUnderstanding; public AppropriationRiskAssessment AssessRisk(CreativeDecision decision, ProjectContext context) { return new AppropriationRiskAssessment(); } }
     public class MarginizedCommunityEmpowerment { public bool centersMarginizedVoices; public bool buildsEconomicPower; public bool providesVisibilityPlatforms; public bool facilitatesLeadershipOpportunities; public bool supportsGrassrootsOrganizations; public bool amplifiesTooOftenUnheardStories; }
     public class IntersectionalIdentitySupport { }
-    public class CommunityPartnershipNetwork { }
     public class CulturalConsultantIntegration { }
     public class FeedbackLoopSystem { }
     public class RevenueSharingFramework { public bool sharesProfitsWithCommunities; public bool providesTransparency; public bool supportsOrganizations; public bool investsInCommunityProjects; public bool buildsEconomicEmpowerment; public bool createsSustainablePartnership; }

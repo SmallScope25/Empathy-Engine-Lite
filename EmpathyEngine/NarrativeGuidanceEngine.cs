@@ -980,7 +980,7 @@ namespace StudioHeartAndSoul
         public bool promotesGrowth;
         public bool respectsCulturalContext;
         public bool supportsAllParties;
-        public bool fostershers;
+        public bool fostersHealers;
         
         public ConflictGuidance GenerateConflictGuidance(NarrativeRequest request)
         {
@@ -1280,6 +1280,27 @@ namespace StudioHeartAndSoul
     // Cross-engine synergy components
     
     [Serializable]
+    public class EmotionalNarrativeSynergy
+    {
+        public EmotionalSynergy GenerateEmotionalSynergy(NarrativeGuidance guidance, NarrativeRequest request)
+        {
+            return new EmotionalSynergy
+            {
+                emotionalIntegration = "Seamless emotion-narrative fusion",
+                narrativeEmotion = "Emotionally intelligent storytelling",
+                synergyLevel = "Deep emotional-narrative connection",
+                emotionalMoments = new List<string> { "Healing moments", "Emotional growth", "Connection building" },
+                synergyScore = 0.9f
+            };
+        }
+        
+        public void EstablishSynergy(EmotionalGuidanceEngine emotionalEngine)
+        {
+            // Establish synergy connection with emotional engine
+        }
+    }
+    
+    [Serializable]
     public class CulturalNarrativeSynergy
     {
         public CulturalSynergy GenerateCulturalSynergy(NarrativeGuidance guidance, NarrativeRequest request)
@@ -1450,52 +1471,6 @@ namespace StudioHeartAndSoul
         public string culturalContext;
         public string accessibilityNeeds;
         public Dictionary<string, object> milestoneParameters;
-    }
-    
-    // ================================================================================================
-    // MISSING SYNERGY CLASSES - FIXES CS1061 ERRORS
-    // ================================================================================================
-    
-    [Serializable]
-    public class EmotionalNarrativeSynergy
-    {
-        public EmotionalSynergy GenerateEmotionalSynergy(NarrativeGuidance guidance, NarrativeRequest request)
-        {
-            return new EmotionalSynergy
-            {
-                emotionalIntegration = "Seamless emotional-narrative fusion",
-                narrativeEmotion = "Emotionally intelligent storytelling",
-                synergyLevel = "Deep emotional-narrative connection",
-                emotionalMoments = new List<string> { "Empathy moments", "Emotional growth", "Healing narrative" },
-                synergyScore = 0.9f
-            };
-        }
-        
-        public void EstablishSynergy(EmotionalGuidanceEngine emotionalEngine)
-        {
-            // Establish synergy connection with emotional engine
-        }
-    }
-    
-    [Serializable]
-    public class CulturalNarrativeSynergy
-    {
-        public CulturalSynergy GenerateCulturalSynergy(NarrativeGuidance guidance, NarrativeRequest request)
-        {
-            return new CulturalSynergy
-            {
-                culturalIntegration = "Seamless cultural-narrative fusion",
-                narrativeCulture = "Culturally authentic storytelling",
-                synergyLevel = "Deep cultural-narrative connection",
-                culturalMoments = new List<string> { "Cultural authenticity", "Community validation", "Cultural healing" },
-                synergyScore = 0.9f
-            };
-        }
-        
-        public void EstablishSynergy(CulturalGuidanceEngine culturalEngine)
-        {
-            // Establish synergy connection with cultural engine
-        }
     }
     
     #endregion

@@ -177,7 +177,7 @@ namespace StudioHeartAndSoul
             {
                 honorsEmotionalExpressionDiversity = true,
                 respectsCulturalEmotionalNorms = true,
-                validatesCross = true,
+                validatesCrossculturalEmotions = true,
                 embracesEmotionalCulturalRichness = true,
                 facilitatesCulturalEmotionalBridging = true
             };
@@ -231,7 +231,7 @@ namespace StudioHeartAndSoul
             boundaryRespect = new EmotionalBoundaryRespect
             {
                 identifiesBoundaryNeeds = true,
-                facilitatesBoundaryExpress = true,
+                facilitatesBoundaryExpression = true,
                 supportsBoundaryMaintenance = true,
                 adaptsToChangingBoundaries = true,
                 celebratesBoundaryRespect = true,
@@ -273,7 +273,7 @@ namespace StudioHeartAndSoul
                 facilitatesGrowthThroughChallenges = true,
                 connectsWithSupportSystems = true,
                 celebratesResilience = true,
-                adaptsToIndividualNeed = true
+                adaptsToIndividualNeeds = true
             };
             
             // Community healing integration
@@ -332,16 +332,16 @@ namespace StudioHeartAndSoul
             };
             
             // Add empathy-enhanced suggestions
-            insight.suggestions = GenerateEmpathyInformedSuggestions(decision, context);
+            insight.suggestions = GenerateEmpathyInformedSuggestions(decision, context).ConvertAll(s => s.suggestion);
             
             // Add healing-focused recommendations
-            insight.healingRecommendations = GenerateHealingRecommendations(decision, context);
+            insight.healingRecommendations = GenerateHealingRecommendations(decision, context).ConvertAll(h => h.recommendation);
             
             // Add trauma-informed considerations
-            insight.traumaConsiderations = traumaCore.AnalyzeForTraumaConsiderations(decision, context);
+            insight.traumaConsiderations = traumaCore.AnalyzeForTraumaConsiderations(decision, context).ConvertAll(t => t.consideration);
             
             // Add found family opportunities
-            insight.foundFamilyOpportunities = foundFamilyEngine.IdentifyFoundFamilyOpportunities(decision, context);
+            insight.foundFamilyOpportunities = foundFamilyEngine.IdentifyFoundFamilyOpportunities(decision, context).ConvertAll(f => f.opportunity);
             
             return insight;
         }
@@ -725,15 +725,6 @@ namespace StudioHeartAndSoul
         public bool respectsCulturalEmotionalNorms = true;
         public bool bridgesEmotionalCulturalGaps = true;
         public bool celebratesCulturalEmotionalRichness = true;
-    }
-    
-    [Serializable]
-    public class EmotionalNarrativeSynergy
-    {
-        public bool weavesEmotionalArcs = true;
-        public bool buildsEmotionalNarrativeCoherence = true;
-        public bool createsHealingNarratives = true;
-        public bool integratessEmotionalStorytellingWisdom = true;
     }
     
     [Serializable]

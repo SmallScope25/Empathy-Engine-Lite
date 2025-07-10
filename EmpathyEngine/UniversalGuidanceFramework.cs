@@ -154,7 +154,7 @@ namespace StudioHeartAndSoul
         private void EnableProprietaryIntelligence()
         {
             // The secret sauce that makes us irreplaceable
-            metaLearning = new MetaLearningCore
+            metaLearning = new MetaLearningCore(corePhilosophy)
             {
                 learnsFromAllDomains = true,
                 evolutionSpeed = EvolutionSpeed.Continuous,
@@ -269,5 +269,15 @@ namespace StudioHeartAndSoul
             this.importance = importance;
             this.isCore = isCore;
         }
+    }
+    
+    [Serializable]
+    public class CommunityPartnershipNetwork
+    {
+        public bool maintainsAuthenticRelationships = true;
+        public bool growsWisdomDatabase = true;
+        public bool validatesGuidance = true;
+        public bool enablesCollaboration = true;
+        public bool buildsIrreplaceableValue = true;
     }
 }

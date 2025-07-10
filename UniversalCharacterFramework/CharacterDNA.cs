@@ -147,15 +147,7 @@ namespace UniversalCharacterFramework
         
         private AudioProfile GenerateAudioProfile()
         {
-            return new AudioProfile
-            {
-                culturalMusicInfluences = ExtractMusicInfluences(),
-                personalityBasedTempo = DetermineTempoPreferences(),
-                emotionalMusicMapping = MapEmotionalMusic(),
-                voiceCharacteristics = GenerateVoiceProfile(),
-                culturalInstruments = IdentifyCulturalInstruments(),
-                combatMusic = GenerateCombatMusic()
-            };
+            return new AudioProfile(this);
         }
         
         private VisualMarkers GenerateVisualMarkers()
@@ -206,6 +198,8 @@ namespace UniversalCharacterFramework
         {
             return RequiresCommunityConsultation() || RequiresHistoricalValidation();
         }
+        
+
         
         private List<string> IdentifyConsultationPartners()
         {
@@ -307,7 +301,18 @@ namespace UniversalCharacterFramework
         private string GenerateCombatMusic() => "Combat_Music_Style";
         private List<string> ExtractCulturalClothing() => new List<string> { "Cultural_Clothing_Style" };
         private List<string> DeterminePersonalityColors() => new List<string> { "Personality_Color_Palette" };
-        private List<string> IdentifyCulturalArtifacts() => new List<string> { "Cultural_Artifacts" };
+        private CulturalArtifacts IdentifyCulturalArtifacts() => new CulturalArtifacts
+        {
+            primaryCulture = culturalIdentity,
+            jewelry = new List<string> { "Traditional_Jewelry" },
+            textiles = new List<string> { "Cultural_Patterns" },
+            colors = new List<string> { "Cultural_Colors" },
+            symbolism = new List<string> { "Cultural_Symbols" },
+            performance = new List<string> { "Traditional_Arts" },
+            appropriationRisk = 0.3f,
+            authenticityLevel = 0.8f,
+            communityConsultationRequired = RequiresCommunityConsultation()
+        };
         private string DetermineBodyLanguage() => "Cultural_Body_Language";
         private List<string> GenerateFacialFeatures() => new List<string> { "Cultural_Facial_Features" };
         private List<string> ExtractCulturalMarkings() => new List<string> { "Cultural_Markings" };

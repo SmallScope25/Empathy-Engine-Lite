@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UniversalFramework.ThermalManagement;
 
 namespace UniversalCharacterFramework
 {
@@ -58,9 +59,9 @@ namespace UniversalCharacterFramework
         public AudioProfile(CharacterDNA dna)
         {
             InitiateMixedInitiativeAudioValidation(dna);
-            ProcessCulturalMusic(dna.culturalIdentity, dna.activeDataSet);
+            ProcessCulturalMusic(dna.culturalIdentity, dna.activeDataSet.ToString());
             ProcessBeatMatching(dna.traits, dna.animationData);
-            ProcessEmotionalSignature(dna.emotionalDuality, dna.traits);
+            ProcessEmotionalSignature(ParseEmotionalDualityFromString(dna.emotionalDuality), dna.traits);
             ProcessSyncParameters(dna);
             ConfigureCrossProjectCompatibility(dna);
             
@@ -320,6 +321,18 @@ namespace UniversalCharacterFramework
             return Mathf.Clamp(baseTempo, 60f, 200f);
         }
         
+        private EmotionalDuality ParseEmotionalDualityFromString(string emotionalDualityString)
+        {
+            var parts = emotionalDualityString.Split('_');
+            
+            return new EmotionalDuality
+            {
+                primaryEmotion = parts.Length > 0 ? parts[0] : "Calm",
+                secondaryEmotion = parts.Length > 1 ? parts[1] : "Thoughtful",
+                blendRatio = 0.5f
+            };
+        }
+        
         private void ProcessEmotionalSignature(EmotionalDuality duality, CharacterTraits traits)
         {
             emotionalSignature = new EmotionalAudioSignature();
@@ -485,10 +498,10 @@ namespace UniversalCharacterFramework
         
         private void AdjustForThermalState()
         {
-            var thermalMonitor = ThermalMonitor.Instance;
+            var thermalMonitor = UnityEngine.Object.FindFirstObjectByType<ThermalMonitor>();
             if (thermalMonitor != null)
             {
-                float thermalComplexity = thermalMonitor.GetCurrentPerformanceMultiplier();
+                float thermalComplexity = thermalMonitor.GetCustomSetting("textureQuality", 1f);
                 
                 // Adjust audio complexity based on thermal state
                 culturalMusic.SimplifyForPerformance(thermalComplexity);
